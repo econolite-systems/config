@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<!-- SPDX-License-Identifier: MIT -->
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>Econolite.Ode.Config</AssemblyName>
+        <RootNamespace>Econolite.Ode.Config</RootNamespace>
+        <PackageId>Econolite.Ode.Config</PackageId>
+        <Version>1.0.0.0</Version>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion> 
+  <Copyright>2023-&lt;&lt;CURRENT_YEAR&gt;&gt; Econolite Systems, Inc.</Copyright>
+</PropertyGroup>
+
+</Project>
+

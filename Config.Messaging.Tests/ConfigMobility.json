@@ -1,0 +1,65 @@
+// SPDX-License-Identifier: MIT
+// Copyright: 2023 Econolite Systems, Inc.
+{
+    "deviceManagerId": 1,
+    "channels": [
+        {
+            "broadcastIPAddress": "",
+            "byteRxTimeout": 500,
+            "channelType": "Udp",
+            "commRequestTimeout": 500,
+            "failedPollRate": 3,
+            "id": 1,
+            "innerByteDelay": 0,
+            "innerChannelDelay": false,
+            "innerDeviceDelay": 0,
+            "maxExpectedPacketSize": 540,
+            "name": "Don\u0027t let them aboard",
+            "pollErrorThreshold": 3,
+            "pollRetries": 0,
+            "primaryPollRate": 1000,
+            "priorityPollRate": 1000,
+            "protocol": "NTCIP",
+            "retries": 3,
+            "secondaryPollRate": 30000,
+            "tertiaryPollRate": 0,
+            "timeFormat": "TimeUTC"
+        }
+    ],
+    "devices": [
+        {
+            "externalTag": "",
+            "broadcastIPAddress": "0.0.0.0",
+            "channelId": 1,
+            "channelType": "Udp",
+            "commMode": "Online",
+            "commRequestTimeout": 500,
+            "deviceId": "7bf895b4-d9ce-4f8c-aeee-8582c29aa465",
+            "deviceIP": "127.0.0.1",
+            "devicePollRetries": 0,
+            "devicePort": 0,
+            "deviceRetries": 1,
+            "deviceSubType": 10,
+            "deviceTimeFormat": "TimeUTC",
+            "deviceType": "Signal",
+            "failedPollRate": 10000,
+            "ftpUsername": "econolite",
+            "ftpPassword": "ecpi2ecpi",
+            "pollErrorThreshold": 1,
+            "primaryPollRate": 1000,
+            "priorityPollRate": 1000,
+            "protocol": "NTCIP",
+            "secondaryPollRate": 30000,
+            "snmpCommunityName": "administrator",
+            "sshHostKey": "",
+            "sshPort": 22,
+            "tertiaryPollRate": 0,
+            "maxVbsPerPdu": 6,
+            "backupPreventPeriod": "00:01:00",
+            "filteredCommBad": 30,
+            "filteredCommMarginal": 70,
+            "filteredCommWeightingFactor": 30,
+            "allowedTimeDrift": "00:00:05"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<!-- SPDX-License-Identifier: MIT -->
+    
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>Econolite.Ode.Config.Messaging</AssemblyName>
+        <RootNamespace>Econolite.Ode.Config.Messaging</RootNamespace>
+        <PackageId>Econolite.Ode.Config.Messaging</PackageId>
+        <Version>1.0.0.0</Version>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
+    <Copyright>2023-&lt;&lt;CURRENT_YEAR&gt;&gt; Econolite Systems, Inc.</Copyright>
+</PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="protobuf-net.BuildTools" Version="3.2.27">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove="proto\configuration.proto" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <AdditionalFiles Include="proto\configuration.proto" />
+    </ItemGroup>
+
+    <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)\common\Messaging\Messaging.csproj" />
+    <ProjectReference Include="..\Config\Config.csproj" />
+  </ItemGroup>
+
+</Project>
+

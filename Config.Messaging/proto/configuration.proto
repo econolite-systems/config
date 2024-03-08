@@ -1,0 +1,160 @@
+﻿syntax = "proto3";
+
+package Econolite.Ode.Config.Messaging.proto;
+
+enum TimeFormat {
+    TimeDefault = 0;
+    TimeUTC = 1;
+    TimeLocal = 2;
+}
+
+message UUID {
+    string value = 1;
+}
+
+enum CommunicationMode {
+    OnLine = 0;
+    OffLine = 1;
+    StandBy = 2;
+}
+
+enum Protocol {
+    Ntcip = 0;
+}
+message CommonChannel {
+    int32 id = 1;
+    string name = 2;
+    int32 retries = 3;
+    int32 poll_retries = 4;
+    int32 timeout = 5;
+    int32 poll_error_threshold = 6;
+    int32 failed_poll_rate = 7;
+    int32 primary_poll_rate = 8;
+    int32 secondary_poll_rate = 9;
+    int32 priority_poll_rate = 10;
+    int32 tertiary_poll_rate = 11;
+    TimeFormat time_format = 12;
+}
+
+message CommonIp {
+    CommonChannel common_channel = 1;
+    string source_ip = 2;
+    int32 source_port = 3;
+}
+
+message SerialOverUdp {
+    CommonIp common_ip = 1;
+    string destination_ip = 2;
+    int32 destination_port = 3;
+}
+
+message CommonDevice {
+    UUID id = 1;
+    string tag = 2;
+    int32 channel_id = 3;
+    CommunicationMode communication_mode = 4;
+    int32 timeout = 5;
+    int32 retries = 6;
+    int32 poll_retries = 7;
+    int32 poll_error_threshold = 8;
+    int32 failed_poll_rate = 9;
+    int32 primary_poll_rate = 10;
+    int32 secondary_poll_rate = 11;
+    int32 priority_poll_rate = 12;
+    int32 tertiary_poll_rate = 13;
+    TimeFormat time_format = 14;
+    Protocol protocol = 15;
+    int32 filtered_communication_bad  = 16;
+    int32 filtered_communication_marginal = 17;
+    int32 filtered_communication_weighting_factor = 18;
+    int32 allowed_time_drift = 19;
+    optional int32 max_vbs_per_pdu = 20;
+}
+
+message CommonIpDevice {
+    CommonDevice common_device = 1;
+    string device_ip = 2;
+    int32 device_port = 3;
+    int32 ssh_port = 4;
+    string community_name = 5;
+    string user_name = 6;
+    string password = 7;
+}
+
+message CommonSerialDevice {
+    CommonDevice common_device = 1;
+    int32 drop_address = 2;
+}
+
+enum SignalType {
+    NTCIP = 1;
+    ASC3 = 2;
+    EOS = 3;
+    Eagle = 4;
+    MaxTime = 5;
+    TrafficWareCommander = 6;
+    D4 = 7;
+    AB3418 = 100;
+    AB3418E = 101;
+}
+
+message CommonSignal {
+    SignalType signal_type = 1;
+    optional uint64 main_street_phases = 2;
+    optional uint64 side_street_phases = 3;
+    optional uint64 main_street_overlaps = 4;
+    optional uint64 side_street_overlaps = 5;
+    optional int32 volume_occupancy_period = 6;
+    optional bool collect_high_resolution_data = 7;
+    optional bool discover_dynamic_objects = 8;
+    optional bool detector_fault_polling = 9;
+    optional bool adaptive_polling = 10;
+}
+
+message UdpSignal {
+    CommonIpDevice common_ip_device = 1;
+    CommonSignal common_signal = 2;
+}
+
+message SerialSignal {
+    CommonSerialDevice common_serial_device = 1;
+    CommonSignal common_signal = 2;
+}
+
+message Channels {
+    repeated CommonIp udp = 1;
+    repeated SerialOverUdp serial_over_udp = 2;
+    repeated CommonIp shared_udp = 3;
+}
+
+message Signals {
+    repeated UdpSignal udp_signals = 1;
+    repeated SerialSignal serial_over_udp_signals = 2;
+}
+
+enum EnvironmentalSensorType {
+    NA = 0;
+}
+
+message CommonEnvironmentalSensor {
+    EnvironmentalSensorType environmental_sensor_type = 1;
+}
+
+message UdpEnvironmentalSensor {
+    CommonIpDevice common_ip_device = 1;
+}
+
+message EnvironmentalSensors {
+    repeated UdpEnvironmentalSensor udp_environmental_sensor = 1;
+}
+
+message Devices {
+    Signals signals = 1;
+    EnvironmentalSensors environmental_sensors = 2;
+}
+
+message Configuration {
+    int32 device_manager_id = 1;
+    Channels channels = 2;
+    Devices Devices = 3;
+}
